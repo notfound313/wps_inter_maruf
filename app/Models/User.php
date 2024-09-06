@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function hierarchy()
+    {
+        return $this->hasOne(UserHierarchy::class);
+    }
+    public function subordinates()
+    {
+        return $this->hasMany(UserHierarchy::class, 'supervisor_id');
+    }
 }

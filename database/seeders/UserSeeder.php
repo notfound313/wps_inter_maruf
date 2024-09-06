@@ -22,23 +22,35 @@ class UserSeeder extends Seeder
 
       $users = [
         [
-          'name' => 'Direktur User',
+          'name' => 'Direktur Utama',
           'email' => 'admin@example.com',
           'password' => Hash::make('password'),
           'role_id' => $direkturRoleId,
         ],
         [
-          'name' => 'Manager User',
-          'email' => 'manager@example.com',
+          'name' => 'Manager Keuangan',
+          'email' => 'manageruang@example.com',
           'password' => Hash::make('password'),
           'role_id' => $managerRoleId,
         ],
         [
-          'name' => 'Staff User',
-          'email' => 'Staff@example.com',
+            'name' => 'Manager Operasional',
+            'email' => 'managerope@example.com',
+            'password' => Hash::make('password'),
+            'role_id' => $managerRoleId,
+          ],
+        [
+          'name' => 'Staff Keuangan',
+          'email' => 'Staffuang@example.com',
           'password' => Hash::make('password'),
           'role_id' => $staffRoleId,
-        ]
+        ],
+        [
+            'name' => 'Staff Operasional',
+            'email' => 'Staffope@example.com',
+            'password' => Hash::make('password'),
+            'role_id' => $staffRoleId,
+          ]
         ];
 
       
