@@ -23,15 +23,20 @@ class DailyLogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'date' => 'required|date',
+
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'title' => 'required|string',
             'description' => 'required|string',
         ]);
 
         DailyLog::updateOrCreate(
-            ['user_id' => Auth::id(), 'date' => $request->date],
+
+            ['user_id' => Auth::id(), 'start_date' => $request->start_date, 'end_date' => $request->end_date],
             [
+                'title' => $request->title,
                 'description' => $request->description,
-                'status_id' => 1 // Default to 'Pending'
+                'status_id' => 1 //default for ech input data
             ]
         );
 

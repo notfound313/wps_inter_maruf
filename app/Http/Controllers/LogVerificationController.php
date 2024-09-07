@@ -82,17 +82,14 @@ class LogVerificationController extends Controller
     
             $formattedLogs = $logs->map(function ($log) {
                 return [
-                    'title' => $log->name,
-                    'start' => $log->date, 
-                    'end' => $log->date,
-                    'description' => $log->description
+                    'title' => $log->title ?? 'No data',
+                    'start' => $log->start_date?? 'No start date', 
+                    'end' => $log->end_date ?? 'No data',
+                    'description' => $log->description ?? 'No data'
                 ];
             });
         
-            return response()->json([
-                'success' => true,
-                'data' => $formattedLogs
-            ]);
+            return response()->json($formattedLogs);
             }
     
 }

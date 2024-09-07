@@ -19,8 +19,18 @@
         <form action="{{ route('daily-log.store') }}" method="POST" class="mb-5 bg-light p-4 rounded-lg shadow">
             @csrf
             <div class="form-group">
-                <label for="date" class="font-weight-bold text-primary">Date:</label>
-                <input type="date" id="date" name="date" class="form-control border-primary rounded-lg shadow-sm" required>
+                <label for="title" class="font-weight-bold text-primary">Title:</label>
+                <input type="text" id="title" name="title" class="form-control border-primary rounded-lg shadow-sm" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="start_date" class="font-weight-bold text-primary">Start Date:</label>
+                <input type="date" id="start_date" name="start_date" class="form-control border-primary rounded-lg shadow-sm" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="end_date" class="font-weight-bold text-primary">End Date:</label>
+                <input type="date" id="end_date" name="end_date" class="form-control border-primary rounded-lg shadow-sm" required>
             </div>
             
             <div class="form-group">
@@ -39,7 +49,9 @@
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th>Details</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -48,7 +60,9 @@
                     <tbody>
                         @foreach ($logs as $log)
                             <tr>
-                                <td>{{ $log->date }}</td>
+                                <td>{{ $log->title }}</td>
+                                <td>{{ $log->start_date }}</td>
+                                <td>{{ $log->end_date }}</td>
                                 <td>{{ $log->description }}</td>
                                 <td>
                                     @if($log->status->name == 'Pending')

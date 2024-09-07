@@ -40,7 +40,9 @@
                 <table class="table table-hover table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th>Date</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Title</th>
                             <th>User</th>
                             <th>Details</th>
                             <th>Status</th>
@@ -50,7 +52,9 @@
                     <tbody>
                         @foreach ($logs as $log)
                             <tr>
-                                <td>{{ $log->date }}</td>
+                                <td>{{ $log->start_date }}</td>
+                                <td>{{ $log->end_date }}</td>
+                                <td>{{ $log->title }}</td>
                                 <td>{{ $log->user->name }}</td>
                                 <td>{{ $log->description }}</td>
                                 <td>

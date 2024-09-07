@@ -16,7 +16,9 @@ class CreateLogTableUser extends Migration
         Schema::create('daily_logs', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('user_id');
-            $table->date('date');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->text('title');
             $table->text('description');
             $table->unsignedBigInteger('status_id');
             

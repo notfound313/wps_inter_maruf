@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DailyLog extends Model
 {
     public $timestamps = false;
-    protected $fillable = ['user_id', 'date', 'description', 'status_id'];
+    protected $fillable = ['user_id', 'start_date', 'end_date', 'title','description', 'status_id'];
 
     public function user()
     {
