@@ -58,7 +58,7 @@
                 editable: true,
                 selectable: true,
                 eventClick: function(info) {
-                    alert('Event: ' + info.event.name);                   
+                    alert('Event: ' + info.event.title);                   
                 },
             });
 
