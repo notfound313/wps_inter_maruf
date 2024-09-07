@@ -17,10 +17,11 @@ class DashboardController extends Controller
         $subordinates = $user->subordinates()->with('user')->get();
         $userHierarchy = UserHierarchy::where('subordinate_id', $user->id)->first();
         $supervisor = $userHierarchy ? $userHierarchy->supervisor : null;
+        $logs = DailyLog::whereIn('user_id', $subordinates->pluck('user.id'))
+                ->orderBy('start_date', 'desc')
+                ->get();
         
-        $logs = DailyLog::where('status_id', 1)
-        ->whereIn('user_id', $subordinates->pluck('user.id'))
-        ->get();
+            
 
         $formattedLogs = $logs->map(function ($log) {
             return [

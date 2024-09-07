@@ -54,7 +54,7 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                events: '/api/employee-logs',
+                events:@json($formattedLogs),
                 editable: true,
                 selectable: true,
                 eventClick: function(info) {
