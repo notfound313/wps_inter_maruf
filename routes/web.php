@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DailyLogController;
 
 
 
@@ -23,9 +24,18 @@ Route::get('/', function () {
         return redirect('/login');
     }
 });
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/log/daily-log', [DailyLogController::class, 'index'])->name('log/daily-log');
+    Route::post('/log/daily-log', [DailyLogController::class, 'store'])->name('daily-log.store');
+    Route::put('/log/daily-log/{log}/status', [DailyLogController::class, 'updateStatus'])->name('daily-log.update-status');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+// Route::get('/log/daily-log', [DailyLogController::class, 'index'])->name('log/daily-log');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
 

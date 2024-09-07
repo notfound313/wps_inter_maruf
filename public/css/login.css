@@ -1,0 +1,66 @@
+
+
+body {
+    background-image: url('https://as1.ftcdn.net/v2/jpg/07/68/07/54/1000_F_768075443_PtsIPg06M341a0aXCse2DsExDYzOMzaM.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.card-header {
+    background-color: rgba(165, 42, 42, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top-left-radius: 15px !important;
+    border-top-right-radius: 15px !important;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+.card-body {
+    padding: 2rem;
+}
+.form-control {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #007bff;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.btn-primary {
+    background-color: rgba(165, 42, 42, 0.7);
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.btn-primary:hover {
+    background-color: rgba(139, 69, 19, 0.8);
+}
+.btn-outline-secondary {
+    border-color: rgba(206, 212, 218, 0.5);
+    color: #6c757d;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+.btn-outline-secondary:hover {
+    background-color: rgba(248, 249, 250, 0.3);
+    color: #495057;
+}

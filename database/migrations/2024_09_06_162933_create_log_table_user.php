@@ -13,7 +13,7 @@ class CreateLogTableUser extends Migration
      */
     public function up()
     {
-        Schema::create('log', function (Blueprint $table) {
+        Schema::create('daily_logs', function (Blueprint $table) {
             $table->id('id');
             $table->unsignedBigInteger('user_id');
             $table->date('date');
@@ -21,7 +21,7 @@ class CreateLogTableUser extends Migration
             $table->unsignedBigInteger('status_id');
             
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('status_id')->references('id')->on('statuses')->default(1);
         });
     }
 
@@ -32,6 +32,6 @@ class CreateLogTableUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('log');
+        Schema::dropIfExists('daily_logs');
     }
 }
