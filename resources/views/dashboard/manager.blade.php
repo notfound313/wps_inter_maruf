@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Directur Dashboard')
+@section('title', 'Manager Dashboard')
 
 @section('header-title')
     Welcome, {{ $user->name }}!
@@ -34,8 +34,8 @@
                     </table>
                 </div>
             @endif
-            <p>You are logged in as a Manager. Here you can manage and oversee company operations.</p>
-            
+            <div id='calendar'></div>
+            <p>You are logged in as a Manager. Here you can manage and oversee company operations.</p>            
             <a href="{{ route('log/daily-log') }}" class="btn btn-primary">Create Daily Log</a>
             <a href="{{ route('log-verification.index') }}" class="btn btn-success">Log Verification</a>
         </div>
@@ -46,4 +46,23 @@
             </form>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: '/api/employee-logs',
+                editable: true,
+                selectable: true,
+                eventClick: function(info) {
+                    alert('Event: ' + info.event.name);                   
+                },
+            });
+
+            calendar.render();
+        });
+    </script>
 @endsection
