@@ -16,4 +16,4 @@ use App\Http\Controllers\LogVerificationController;
 */
 
 
-Route::get('/employee-logs', [LogVerificationController::class, 'getEmployeeLogs']);
+// Route::get('/employee-logs', [LogVerificationController::class, 'getEmployeeLogs']);

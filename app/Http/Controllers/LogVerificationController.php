@@ -64,32 +64,7 @@ class LogVerificationController extends Controller
 
         return redirect()->route('log-verification.index')->with('success', 'Log status has been updated successfully.');
     }
-    // craete api
-    public function getEmployeeLogs()
-        {
-            $user = Auth::user();    
-            if (!$user->role) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'User role not found'
-                ], 404);
-            }
-            $role = $user->role->name;
-            $subordinates = $user->subordinates()->with('user')->get();
-            $logs = DailyLog::where('status_id', 1)
-            ->whereIn('user_id', $subordinates->pluck('user.id'))
-            ->get();
+   
     
-            $formattedLogs = $logs->map(function ($log) {
-                return [
-                    'title' => $log->title ?? 'No data',
-                    'start' => $log->start_date?? 'No start date', 
-                    'end' => $log->end_date ?? 'No data',
-                    'description' => $log->description ?? 'No data'
-                ];
-            });
-        
-            return response()->json($formattedLogs);
-            }
     
 }
