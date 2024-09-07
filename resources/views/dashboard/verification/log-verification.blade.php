@@ -9,7 +9,7 @@
 @section('content')
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="text-primary">Logs Pending Verification</h2>
+            <h2 class="text-primary">Logs Verification</h2>
             <a href="{{ route('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
         </div>
 
@@ -41,6 +41,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Date</th>
+                            <th>User</th>
                             <th>Details</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -50,6 +51,7 @@
                         @foreach ($logs as $log)
                             <tr>
                                 <td>{{ $log->date }}</td>
+                                <td>{{ $log->user->name }}</td>
                                 <td>{{ $log->description }}</td>
                                 <td>
                                     @if($log->status->name == 'Pending')

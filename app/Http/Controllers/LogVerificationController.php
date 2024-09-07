@@ -68,16 +68,31 @@ class LogVerificationController extends Controller
     public function getEmployeeLogs()
         {
             $user = Auth::user();    
+            if (!$user->role) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'User role not found'
+                ], 404);
+            }
             $role = $user->role->name;
             $subordinates = $user->subordinates()->with('user')->get();
             $logs = DailyLog::where('status_id', 1)
             ->whereIn('user_id', $subordinates->pluck('user.id'))
             ->get();
     
+            $formattedLogs = $logs->map(function ($log) {
+                return [
+                    'title' => $log->name,
+                    'start' => $log->date, 
+                    'end' => $log->date,
+                    'description' => $log->description
+                ];
+            });
+        
             return response()->json([
                 'success' => true,
-                'data' => $logs
+                'data' => $formattedLogs
             ]);
-        }
+            }
     
 }
