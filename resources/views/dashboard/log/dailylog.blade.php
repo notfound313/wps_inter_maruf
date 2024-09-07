@@ -77,7 +77,7 @@
                                     @endif
                                 </td>
                                  <td>
-                                     <button class="btn btn-sm btn-primary edit-btn hover:bg-blue-600 transition duration-300" onclick="editLog('{{ route('daily-log.update-edit', $log) }}')" {{ in_array($log->status->name, ['Accept', 'Pending']) ? 'disabled' : '' }}>Edit</button>
+                                     <button class="btn btn-sm btn-primary edit-btn hover:bg-blue-600 transition duration-300" onclick="editLog({{ $log}})" {{ in_array($log->status->name, ['Accept', 'Pending']) ? 'disabled' : '' }}>Edit</button>
                                  </td>
                             </tr>
                         @endforeach

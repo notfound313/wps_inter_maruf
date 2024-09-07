@@ -56,9 +56,8 @@ class DailyLogController extends Controller
         return redirect()->route('log/daily-log')->with('success', 'Status has been updated successfully.');
     }
     
-        public function getLogById(Request $request)
-        {
-            $log = DailyLog::findOrFail($request->id);
+        public function getLogById(DailyLog $log)
+        {            
             return response()->json($log);
         }
     
