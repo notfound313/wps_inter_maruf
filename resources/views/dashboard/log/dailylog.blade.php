@@ -16,8 +16,9 @@
             </div>
         @endif
 
-        <form action="{{ route('daily-log.store') }}" method="POST" class="mb-5 bg-light p-4 rounded-lg shadow">
+        <form action="{{ route('daily-log.store') }}" method="POST" class="mb-5 bg-light p-4 rounded-lg shadow" id="logForm">
             @csrf
+            <input type="hidden" id="log_id" name="log_id">
             <div class="form-group">
                 <label for="title" class="font-weight-bold text-primary">Title:</label>
                 <input type="text" id="title" name="title" class="form-control border-primary rounded-lg shadow-sm" required>
@@ -75,9 +76,9 @@
                                         {{ $log->status->name }}
                                     @endif
                                 </td>
-                                <td>
-                                     <button class="btn btn-sm btn-primary edit-btn hover:bg-blue-600 transition duration-300" onclick="editLog({{ $log->id }})" {{ in_array($log->status->name, ['Accept', 'Pending']) ? 'disabled' : '' }}>Edit</button>
-                                </td>
+                                 <td>
+                                     <button class="btn btn-sm btn-primary edit-btn hover:bg-blue-600 transition duration-300" onclick="editLog('{{ route('daily-log.update-edit', $log) }}')" {{ in_array($log->status->name, ['Accept', 'Pending']) ? 'disabled' : '' }}>Edit</button>
+                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -89,8 +90,12 @@
     </div>
 
     <script>        
-        function editLog(logId) {            
-            console.log('Edit log with ID:', logId);
+        function editLog(log) {            
+            document.getElementById('log_id').value = log.id;
+            document.getElementById('title').value = log.title;
+            document.getElementById('start_date').value = log.start_date;
+            document.getElementById('end_date').value = log.end_date;
+            document.getElementById('description').value = log.description;
         }
     </script>
 @endsection

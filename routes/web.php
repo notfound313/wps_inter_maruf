@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/log/daily-log', [DailyLogController::class, 'index'])->name('log/daily-log');
     Route::post('/log/daily-log', [DailyLogController::class, 'store'])->name('daily-log.store');
     Route::put('/log/daily-log/{log}/status', [DailyLogController::class, 'updateStatus'])->name('daily-log.update-status');
+    Route::get('/log/daily-log/{log}/edit', [DailyLogController::class, 'getLogById'])->name('daily-log.update-edit');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
