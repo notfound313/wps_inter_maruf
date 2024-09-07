@@ -53,9 +53,9 @@
                                 <td>
                                     @if($log->status->name == 'Pending')
                                         <span class="badge bg-warning text-dark">{{ $log->status->name }}</span>
-                                    @elseif($log->status->name == 'Rejected')
+                                    @elseif($log->status->name == 'Reject')
                                         <span class="badge bg-danger">{{ $log->status->name }}</span>
-                                    @elseif($log->status->name == 'Accepted')
+                                    @elseif($log->status->name == 'Accept')
                                         <span class="badge bg-success">{{ $log->status->name }}</span>
                                     @else
                                         {{ $log->status->name }}
@@ -75,7 +75,6 @@
     </div>
 
     <script>        
-
         function editLog(logId) {            
             console.log('Edit log with ID:', logId);
         }
